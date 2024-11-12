@@ -3,9 +3,9 @@ import { RouterView } from 'vue-router';
 
 const route = useRoute()
 // console.log('route', route.query);
-window.addEventListener('message', (e) => {
-  console.log('eeee', e);
-})
+// window.addEventListener('message', (e) => {
+//   console.log('eeee', e);
+// })
 
 </script>
 
