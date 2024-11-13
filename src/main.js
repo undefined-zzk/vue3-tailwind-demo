@@ -1,7 +1,13 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import "normalize.css";
+import "virtual:svg-icons-register";
 import "./style.css";
+import globalcomponent from "./plugins/globalcomponent";
 import router from "./router";
 import { pinia } from "./stores";
-createApp(App).use(router).use(pinia).mount("#app");
+const app = createApp(App);
+app.config.errorHandler = (error) => {
+  console.log("error", error);
+};
+app.use(router).use(pinia).use(globalcomponent).mount("#app");

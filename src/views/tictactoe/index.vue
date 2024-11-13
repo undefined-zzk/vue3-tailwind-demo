@@ -1,5 +1,5 @@
 <template>
-    <div class="other">Other</div>
+    <div class="tictactoe">tictactoe</div>
 </template>
 <script setup>
 
