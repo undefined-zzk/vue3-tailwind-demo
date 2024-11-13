@@ -3,10 +3,10 @@
 </template>
 <script setup>
 onActivated(() => {
-    console.log('onActivated')
+    console.log('onActivated,进入')
 })
 onDeactivated(() => {
-    console.log('onDeactivated')
+    console.log('onDeactivated,销毁')
 })
 </script>
 <style lang="scss" scoped></style>
