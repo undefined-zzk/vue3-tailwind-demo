@@ -2,7 +2,11 @@
 export default {
   content: ["./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'auto': 'repeat(auto-fill, minmax(150px, 1fr))'
+      }
+    },
   },
   plugins: [],
-};
+}

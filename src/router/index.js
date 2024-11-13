@@ -1,25 +1,35 @@
-import { createWebHistory, createRouter } from "vue-router";
-
-const routes = [
+import { createWebHistory, createRouter } from "vue-router"
+import { useRouteStore } from '@/stores/modules/route'
+export const routes = [
   {
     path: "/",
     component: () => import("@/views/home/index.vue"),
-    children: [
-      {
-        path: "ticTacToe",
-        component: () => import("@/views/tictactoe/index.vue"),
-        meta: {
-          KeepAlive: false,
-          title: "井字棋",
-        },
-      },
-    ],
+    meta: {
+      keepAlive: false,
+      title: '首页',
+      name: 'home'
+    }
   },
-];
+  {
+    path: "/ticTacToe",
+    component: () => import("@/views/tictactoe/index.vue"),
+    meta: {
+      keepAlive: true,
+      title: "井字棋",
+      name: 'tictactoe'
+    },
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 
-export default router;
+router.beforeEach((to, from) => {
+  const useRoute = useRouteStore()
+  useRoute.setCacheRoute()
+  return true
+})
+
+export default router

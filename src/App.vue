@@ -1,18 +1,14 @@
 <script setup>
-import { RouterView } from 'vue-router';
-
-const route = useRoute()
-console.log('route', route);
-window.addEventListener('message', (e) => {
-  // console.log('eeee', e.data);
-})
-
+import { useRouteStore } from '@/stores/modules/route'
+import { storeToRefs } from 'pinia'
+const useRoute = useRouteStore()
+const { cacheRoute, maxCacheNum } = storeToRefs(useRoute)
 </script>
 
 <template>
-  <div>
-    <RouterView></RouterView>
-  </div>
+  <RouterView v-slot="{ Component, route }">
+    <keep-alive :includes="cacheRoute" :max="maxCacheNum">
+      <component :is="Component" />
+    </keep-alive>
+  </RouterView>
 </template>
-
-<style scoped lang="scss"></style>
