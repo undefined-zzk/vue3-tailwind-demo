@@ -1,8 +1,20 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
-  { path: "/", component: () => import("@/views/home/index.vue") },
-  { path: "/other", component: () => import("@/views/other/index.vue") },
+  {
+    path: "/",
+    component: () => import("@/views/home/index.vue"),
+    children: [
+      {
+        path: "ticTacToe",
+        component: () => import("@/views/tictactoe/index.vue"),
+        meta: {
+          KeepAlive: false,
+          title: "井字棋",
+        },
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

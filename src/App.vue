@@ -2,10 +2,10 @@
 import { RouterView } from 'vue-router';
 
 const route = useRoute()
-// console.log('route', route.query);
-// window.addEventListener('message', (e) => {
-//   console.log('eeee', e);
-// })
+console.log('route', route);
+window.addEventListener('message', (e) => {
+  // console.log('eeee', e.data);
+})
 
 </script>
 

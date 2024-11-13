@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "nanoid": "^5.0.8",
     "normalize.css": "^8.0.1",
     "pinia": "^2.2.6",
     "sass": "^1.80.6",
@@ -21,6 +22,11 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.14",
     "unplugin-auto-import": "^0.18.3",
+<<<<<<< HEAD
     "vite": "^5.4.11"
+=======
+    "vite": "^5.4.10",
+    "vite-plugin-svg-icons": "^2.0.1"
+>>>>>>> dfcb3aacec08346b2e209d31770147c79c7200ff
   }
 }
