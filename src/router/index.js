@@ -19,6 +19,15 @@ export const routes = [
       name: 'tictactoe'
     },
   },
+  {
+    path: "/gomoku",
+    component: () => import("@/views/gomoku/index.vue"),
+    meta: {
+      keepAlive: true,
+      title: "五子棋",
+      name: 'gomoku'
+    },
+  },
 ]
 
 const router = createRouter({

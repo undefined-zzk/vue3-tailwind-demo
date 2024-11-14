@@ -13,8 +13,8 @@
 import { nanoid } from 'nanoid'
 const router = useRouter()
 const demoList = ref([
+    { id: nanoid(), name: '五子棋', path: "/gomoku", icon: 'gomoku' },
     { id: nanoid(), name: '井字棋', path: "/ticTacToe", icon: 'tictactoe' },
-    { id: nanoid(), name: '五字棋', path: "/gomoku", icon: 'gomoku' },
 ])
 
 // 跳转到对应的单独页面
