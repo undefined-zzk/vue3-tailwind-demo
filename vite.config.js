@@ -1,8 +1,8 @@
-import { defineConfig } from "vite"
-import vue from "@vitejs/plugin-vue"
-import path from "path"
-import AutoImport from "unplugin-auto-import/vite"
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import path from "path";
+import AutoImport from "unplugin-auto-import/vite";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -39,34 +39,34 @@ export default defineConfig({
         //静态资源分类打包
         chunkFileNames: "static/js/[name]-[hash].js",
         entryFileNames: "static/js/[name]-[hash].js",
-        assetFileNames: "static/[ext]/[name]-[hash].[ext]",
-        assetFileNames (assetInfo) {
+        // assetFileNames: "static/[ext]/[name]-[hash].[ext]",
+        assetFileNames(assetInfo) {
           // 判断后缀分别放到不用的文件夹中
           if (assetInfo.name.endsWith(".css")) {
-            return "static/css/[name]-[hash].[ext]"
+            return "static/css/[name]-[hash].[ext]";
           }
           if (
             ["png", "jpg", "svg", "PNG"].some((ext) =>
               assetInfo.name.endsWith(ext)
             )
           ) {
-            return "static/img/[name]-[hash].[ext]"
+            return "static/img/[name]-[hash].[ext]";
           }
           if (
             ["ttf", "woff", "woff2"].some((ext) => assetInfo.name.endsWith(ext))
           ) {
-            return "static/fonts/[name]-[hash].[ext]"
+            return "static/fonts/[name]-[hash].[ext]";
           }
-          return "static/css/[name]-[hash].[ext]"
+          return "static/css/[name]-[hash].[ext]";
         },
-        manualChunks (id) {
+        manualChunks(id) {
           //静态资源分拆打包
           if (id.includes("node_modules")) {
             return id
               .toString()
               .split("node_modules/")[1]
               .split("/")[0]
-              .toString()
+              .toString();
           }
         },
       },
@@ -79,4 +79,4 @@ export default defineConfig({
   },
   base: "./",
   productionSourceMap: false,
-})
+});
