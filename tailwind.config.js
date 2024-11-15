@@ -5,7 +5,10 @@ export default {
     extend: {
       gridTemplateColumns: {
         'auto': 'repeat(auto-fill, minmax(150px, 1fr))'
-      }
+      },
+      colors: {
+        'E6E6': '#E6E6E6'
+      },
     },
   },
   plugins: [],
