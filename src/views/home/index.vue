@@ -21,5 +21,6 @@ const demoList = ref([
 const toOppositePage = (item) => {
     router.push(item.path)
 }
+
 </script>
 <style lang="scss" scoped></style>
