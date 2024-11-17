@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-   .cellhover{
-     @apply border-2 border-purple-500 animate-cell-scale
-   }
-   .fx{
-    @apply flex items-center justify-center
-   }
+@layer components {
+  .cellhover {
+    @apply border-2 border-purple-500 animate-cell-scale;
+  }
+  .fx {
+    @apply flex items-center justify-center;
+  }
 }
-
