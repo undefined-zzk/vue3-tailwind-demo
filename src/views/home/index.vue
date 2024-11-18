@@ -12,10 +12,7 @@
 <script setup>
 import { nanoid } from 'nanoid'
 const router = useRouter()
-const demoList = ref([
-    { id: nanoid(), name: '五子棋', path: "/gomoku", icon: 'gomoku' },
-    { id: nanoid(), name: '井字棋', path: "/ticTacToe", icon: 'tictactoe' },
-])
+const demoList = router.getRoutes().map(item => ({ id: nanoid(), name: item.meta.title, path: item.path, icon: item.meta.icon, hidden: item.meta.hidden })).filter(item => (item.path != '/' && !item.hidden))
 
 // 跳转到对应的单独页面
 const toOppositePage = (item) => {

@@ -7,7 +7,9 @@ export const routes = [
     meta: {
       keepAlive: false,
       title: '首页',
-      name: 'home'
+      name: 'home',
+      icon: 'home',
+      hidden: false
     }
   },
   {
@@ -16,7 +18,9 @@ export const routes = [
     meta: {
       keepAlive: true,
       title: "井字棋",
-      name: 'tictactoe'
+      name: 'tictactoe',
+      icon: 'tictactoe',
+      hidden: false
     },
   },
   {
@@ -25,7 +29,20 @@ export const routes = [
     meta: {
       keepAlive: true,
       title: "五子棋",
-      name: 'gomoku'
+      name: 'gomoku',
+      icon: 'gomoku',
+      hidden: false
+    },
+  },
+  {
+    path: "/cancel",
+    component: () => import("@/views/cancel/index.vue"),
+    meta: {
+      keepAlive: true,
+      title: "Axios测试",
+      name: 'cancel',
+      icon: 'axios',
+      hidden: false
     },
   },
 ]

@@ -2,11 +2,19 @@
     <div class="tictactoe w-full h-screen p-5 flex flex-col bg-gray-400">
         <header
             class="text-white h-[100px] opacity-60 px-2.5 bg-gray-800 flex items-center justify-between  text-2xl *:h-full">
-            <div class="fx"></div>
             <div class="font-bold fx"><span>{{ routeTitle }}</span></div>
-            <div class="fx flex-col gap-2.5">
-                <CellSizeSelect v-model="boardSize" />
-                <ColorSelect v-model="borderColor" />
+            <div class="fx gap-2.5 select-none">
+                <div class="fx flex-col gap-2.5">
+                    <button :disabled="isStart"
+                        class="w-[100px] hover:bg-gray-600 hover:border-1 text-sm/6 border border-white rounded disabled:cursor-not-allowed"
+                        @click="startGame">开始游戏</button>
+                    <button :class="`w-[100px] hover:bg-gray-600 text-sm/6 border border-white rounded`"
+                        @click="resetGame">重置</button>
+                </div>
+                <div class="fx flex-col gap-2.5">
+                    <CellSizeSelect v-model="boardSize" />
+                    <ColorSelect v-model="borderColor" />
+                </div>
             </div>
         </header>
         <div class="w-full flex flex-col justify-center items-center flex-1">
@@ -37,6 +45,7 @@ import CellSizeSelect from '@/components/CellSizeSelect/index.vue'
 import ColorSelect from '@/components/ColorSelect/index.vue'
 const opponentBlack = 'black' // 黑方
 const opponentWhite = 'white' // 白方
+const isStart = ref(false)
 // 表格边框颜色
 const borderColor = ref('#D8B4FE')
 // 棋盘宽高
@@ -47,7 +56,7 @@ const cellWH = ref(40)
 const tttData = ref([])
 
 // 下棋方
-const user = ref('black')
+const user = ref('')
 
 const route = useRoute()
 // 标题
@@ -88,8 +97,15 @@ const randomMathToUser = () => {
     user.value = Math.floor(Math.random() * 1000) % 2 === 0 ? opponentBlack : opponentWhite
 }
 
-onMounted(() => {
+const startGame = () => {
+    console.log('afs')
+
     randomMathToUser()
+    isStart.value = true
+}
+const resetGame = () => { }
+
+onMounted(() => {
     getChessData()
 })
 onActivated(() => {
