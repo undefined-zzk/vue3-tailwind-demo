@@ -27,10 +27,10 @@
             </div>
         </header>
         <div class="w-full flex flex-col justify-center items-center flex-1 gap-5">
-            <div>
-                <div>黑方:{{ blackCount }}</div>
-                <div>VS</div>
-                <div>白方:{{ whiteCount }}</div>
+            <div class="fx gap-4 font-bold ">
+                <div>黑方: {{ blackCount }}</div>
+                <div class="text-xl"><span>V</span><span class="text-white">S</span></div>
+                <div class="text-white">白方: {{ whiteCount }}</div>
             </div>
             <div class="flex items-center gap-10 select-none">
                 <div class="flex flex-col items-center">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="fx gap-1">
                     <div>倒计时: </div>
-                    <div :class="{ 'animate-chess': downCount <= 10 }">{{ downCount }}S</div>
+                    <div :class="{ 'animate-chess': downCount <= 10 }" class="w-5 text-center">{{ downCount }}S</div>
                 </div>
             </div>
         </div>
@@ -163,6 +163,7 @@ const resetGame = () => {
 // 结束
 const overGame = () => {
     isStart.value = false
+    user.value = ''
     clearTime()
 }
 // 暂停
