@@ -164,6 +164,7 @@ const resetGame = () => {
 const overGame = () => {
     isStart.value = false
     user.value = ''
+    isStop.value = false
     clearTime()
 }
 // 暂停
