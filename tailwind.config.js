@@ -11,12 +11,17 @@ export default {
       },
       animation: {
         "cell-scale": "cell-scale 0.6s ease-in-out infinite alternate",
-        chess: "cell-scale 0.5s ease-in-out infinite alternate",
+        chess: "chess-scale 0.8s ease-in-out infinite alternate",
       },
       keyframes: {
         "cell-scale": {
           "100%": {
             transform: "scale(1.1)",
+          },
+        },
+        "chess-scale": {
+          "100%": {
+            transform: "scale(1.3)",
           },
         },
       },
