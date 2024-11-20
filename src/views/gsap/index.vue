@@ -21,8 +21,10 @@ const initAnimation = () => {
     tween.value = gsap.to('#A', {
         ease: "power2.inOut",
         x: () => container.value.offsetWidth - 80 - 16,
-        duration: 4,
-        paused: true
+        y: gsap.utils.random(-100, 100, 5), // 随机
+        duration: 4, // 动画总时长4s
+        paused: true,
+        delay: 0.5,// 延迟0.5s
     })
 }
 
