@@ -1,5 +1,7 @@
 html,
 body {
+  height: 100vh;
+  width: 100%;
   /* 自定义滚动条样式 */
   ::-webkit-scrollbar {
     width: 5px; /* 滚动条宽度 */

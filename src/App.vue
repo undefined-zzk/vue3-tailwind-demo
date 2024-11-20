@@ -6,7 +6,7 @@ const { cacheRoute, maxCacheNum } = storeToRefs(useRoute)
 </script>
 
 <template>
-  <RouterView v-slot="{ Component, route }">
+  <RouterView v-slot="{ Component }">
     <keep-alive :includes="cacheRoute" :max="maxCacheNum">
       <component :is="Component" />
     </keep-alive>

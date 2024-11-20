@@ -67,6 +67,7 @@
 import { nanoid } from 'nanoid'
 import CellSizeSelect from '@/components/CellSizeSelect/index.vue'
 import ColorSelect from '@/components/ColorSelect/index.vue'
+// 下棋间隔时长
 const DOWNCOUNTTIME = 300
 // 黑方
 const opponentBlack = 'black'
@@ -160,6 +161,7 @@ const clearTime = () => {
 
 // 判断五子是否相连
 const chessWin = () => {
+
     return false
 }
 

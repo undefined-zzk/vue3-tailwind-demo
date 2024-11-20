@@ -1,16 +1,16 @@
-import { createWebHistory, createRouter } from "vue-router"
-import { useRouteStore } from '@/stores/modules/route'
+import { createWebHistory, createRouter } from "vue-router";
+import { useRouteStore } from "@/stores/modules/route";
 export const routes = [
   {
     path: "/",
     component: () => import("@/views/home/index.vue"),
     meta: {
       keepAlive: false,
-      title: '首页',
-      name: 'home',
-      icon: 'home',
-      hidden: false
-    }
+      title: "首页",
+      name: "home",
+      icon: "home",
+      hidden: false,
+    },
   },
   {
     path: "/ticTacToe",
@@ -18,9 +18,9 @@ export const routes = [
     meta: {
       keepAlive: true,
       title: "井字棋",
-      name: 'tictactoe',
-      icon: 'tictactoe',
-      hidden: false
+      name: "tictactoe",
+      icon: "tictactoe",
+      hidden: false,
     },
   },
   {
@@ -29,9 +29,9 @@ export const routes = [
     meta: {
       keepAlive: true,
       title: "五子棋",
-      name: 'gomoku',
-      icon: 'gomoku',
-      hidden: false
+      name: "gomoku",
+      icon: "gomoku",
+      hidden: false,
     },
   },
   {
@@ -40,22 +40,33 @@ export const routes = [
     meta: {
       keepAlive: true,
       title: "Axios测试",
-      name: 'cancel',
-      icon: 'axios',
-      hidden: false
+      name: "cancel",
+      icon: "axios",
+      hidden: false,
     },
   },
-]
+  {
+    path: "/gsap",
+    component: () => import("@/views/gsap/index.vue"),
+    meta: {
+      keepAlive: false,
+      title: "GSAP",
+      name: "gsap",
+      icon: "gsap",
+      hidden: false,
+    },
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
 router.beforeEach((to, from) => {
-  const useRoute = useRouteStore()
-  useRoute.setCacheRoute()
-  return true
-})
+  const useRoute = useRouteStore();
+  useRoute.setCacheRoute();
+  return true;
+});
 
-export default router
+export default router;

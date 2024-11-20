@@ -9,4 +9,7 @@
   .fx {
     @apply flex items-center justify-center;
   }
+  .item{
+     @apply w-20 h-20 border rounded text-center leading-[80px] text-white
+  }
 }
