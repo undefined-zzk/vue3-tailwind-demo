@@ -13,6 +13,9 @@ export default {
         "cell-scale": "cell-scale 0.6s ease-in-out infinite alternate",
         chess: "chess-scale 0.8s ease-in-out infinite alternate",
       },
+      height: {
+        '2screen': '200vh'
+      },
       keyframes: {
         "cell-scale": {
           "100%": {
@@ -28,4 +31,4 @@ export default {
     },
   },
   plugins: [],
-};
+}
