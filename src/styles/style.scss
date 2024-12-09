@@ -13,3 +13,8 @@
      @apply w-20 h-20 border rounded text-center leading-[80px] text-white
   }
 }
+@layer utilities{
+  .h-2screen{
+    height: 200vh;
+  }
+}
