@@ -8,6 +8,8 @@ import globalcomponent from "./plugins/globalcomponent"
 import directives  from "./directives"
 import router from "./router"
 import { pinia } from "./stores"
+// import 'amfe-flexible'
+
 const app = createApp(App)
 app.config.errorHandler = (error) => {
   console.log("error", error)

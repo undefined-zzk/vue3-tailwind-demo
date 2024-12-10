@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue"
 import path from "path"
 import AutoImport from "unplugin-auto-import/vite"
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+import postcssPxtoRem from 'postcss-pxtorem'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -86,4 +87,19 @@ export default defineConfig({
   },
   base: "./",
   productionSourceMap: false,
+  // css: {
+  //   postcss:{
+  //     plugins: [
+  //        postcssPxtoRem({
+  //     rootValue: 192, // 按照自己的设计稿修改 1920/10
+  //         unitPrecision: 5, // 保留到5位小数
+  //         selectorBlackList: ['ignore', 'tab-bar', 'tab-bar-item'],  // 忽略转换正则匹配项
+  //         propList: ['*'],
+  //         replace: true,
+  //         mediaQuery: false,
+  //         minPixelValue: 0
+  //   })
+  //     ]
+  //   }
+  // }
 })

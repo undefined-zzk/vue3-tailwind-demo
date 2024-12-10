@@ -13,7 +13,7 @@ export const loading = {
         } 
     },
       updated(el, binding) {
-        const bool = binding.value
+          const bool = binding.value
         if (bool) {
             const app = createApp(Loading)
             const instance = app.mount(document.createElement('div'))
