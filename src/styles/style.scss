@@ -9,7 +9,16 @@
   .fx {
     @apply flex items-center justify-center;
   }
-  .item{
-     @apply w-20 h-20 border rounded text-center leading-[80px] text-white
+  .item {
+    @apply w-20 h-20 border rounded text-center leading-[80px] text-white;
+  }
+}
+
+@layer utilities {
+  .rotate-x-45 {
+    transform: rotateX(45deg);
+  }
+  .w-100 {
+    width: 400px;
   }
 }
