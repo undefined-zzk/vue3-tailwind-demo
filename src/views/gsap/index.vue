@@ -1,90 +1,70 @@
 <template>
-    <div class="h-full p-5 fx gap-5 bg-purple-700 select-none *:text-white">
-        <button @click="openDialog" class="border border-purple-500 w-40 rounded-md">打开弹窗</button>
-        <div id="box"
-            class="w-1/2 invisible origin-top-left scale-50 fx h-1/2 fixed z-10 bg-neutral-500 opacity-60 left-0 top-0 border border-purple-400 rounded-md leading-10 text-center">
-            <button @click="closeDialog" class="border border-purple-700 w-40 rounded-md">关闭</button>
-        </div>
-        <div class="container" ref="ballRef">
+    <div ref="boxRef" id="box"
+        class="flex flex-col gap-5 items-center overflow-hidden min-h-screen relative animation-container w-full bg-purple-600">
+        <div class="box-item fx relative gap-5 w-[1220px] h-[300px]" v-for="(item, index) in list" :key="index">
+            <div class="rounded-md border border-purple-500 overflow-hidden w-[400px] h-[300px]"
+                v-for="(sub, idx) in item.children" :key="sub">
+                <Loading v-if="sub.loading"></Loading>
+                <img v-lazy="sub.url" @load="onLoad(index, idx)" class="w-full h-full object-fill" alt="">
+            </div>
         </div>
     </div>
 </template>
 <script setup>
-// import { gsap } from 'gsap'
 import { gsap } from "gsap-trial"
-import { ScrollTrigger } from "gsap-trial/ScrollTrigger"
-import { GSDevTools } from "gsap-trial/GSDevTools"
 import { Physics2DPlugin } from "gsap-trial/Physics2DPlugin"
-gsap.registerPlugin(GSDevTools, ScrollTrigger, Physics2DPlugin)
-// GSDevTools.create()
-const ballRef = ref(null)
-const exp = ref(null)
-const dots = ref([])
+import { ScrollToPlugin } from "gsap-trial/ScrollToPlugin"
+import { SplitText } from 'gsap-trial/SplitText'
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Loading from '@/components/Loading/index.vue'
+// 注册插件
+gsap.registerPlugin(Physics2DPlugin, ScrollToPlugin, SplitText, ScrollTrigger)
+const boxRef = ref(null)
+
+const list = ref(new Array(30).fill(false).map(item => ({
+    ...item, children: [
+        { url: `https://picsum.photos/id/${Math.floor(gsap.utils.random(200, 1000))}/400/300`, loading: true },
+        { url: `https://picsum.photos/id/${Math.floor(gsap.utils.random(200, 1000))}/400/300`, loading: true },
+        { url: `https://picsum.photos/id/${Math.floor(gsap.utils.random(200, 1000))}/400/300`, loading: true },
+    ]
+})))
+
 const initAnimation = () => {
-    const tl = gsap.timeline({ repeat: -1, defaults: { duration: 3 } })
-    try {
-        for (let i = 0; i < 50; i++) {
-            const dot = document.createElement('div')
-            dot.setAttribute("class", "dot")
-            ballRef.value.appendChild(dot)
-            dots.value.push(dot)
-        }
-        tl.set(dots.value, { backgroundColor: 'random([#663399,#84d100,#cc9900,#0066cc,#993333])', scale: 'random(0.4,1)', x: 400, y: 300, width: '40px', height: '40px', borderRadius: '50%', position: 'absolute' })
-        tl.to(dots.value, {
-            physics2D: {
-                velocity: "random(200, 650)",
-                angle: "random(250, 290)",
-                gravity: 500
-            },
-            delay: "random(0, 2.5)"
-        }).to(dots.value,
-            {
-                opacity: 0, onComplete: () => {
+    const items = gsap.utils.toArray('.box-item')
+    items.forEach(item => {
+        gsap.from(item.children, {
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: 'back.inOut',
+            scrollTrigger: {
+                trigger: item,
+                start: 'top 90%',
+                toggleActions: "play none none reverse",
+                onEnter: () => {
+                    // console.log('onEnter');
+                },
+                onLeave: () => {
+                    // console.log('onLeave');
+                },
+                onEnterBack: () => {
+                    // console.log('onEnterBack');
+                },
+                onLeaveBack: () => {
+                    // console.log('onLeaveBack');
                 }
             }
-        )
-    } catch (error) {
-        console.log('aa', error)
-    }
-    // 延迟2秒后执行
-    gsap.delayedCall(1, (...args) => {
-        // tl.restart()
-    }, [1, 2])
-}
-
-const openDialog = () => {
-    exp.value = gsap.exportRoot()
-    exp.value.pause()
-    const tl = gsap.timeline({ defaults: { visibility: 'visible', } })
-    tl.seek(0).clear()
-    tl.to('#box', {
-        ease: 'elastic.out',
-        duration: 0.8,
-        left: () => window.innerWidth / 2,
-        top: () => window.innerWidth / 2,
-        xPercent: -50,
-        yPercent: -50,
-        scale: 1,
+        })
     })
 }
 
-const closeDialog = () => {
-    const tl = gsap.timeline()
-    tl.seek(0).clear()
-    tl.to("#box", {
-        left: 0, top: 0, scale: 0, ease: 'expo.in', onComplete: () => {
-            exp.value.resume()
-        }
-    })
+const onLoad = (index, idx) => {
+    list.value[index].children[idx].loading = false
 }
 
 onMounted(() => {
     initAnimation()
 })
-
-onBeforeUnmount(() => {
-})
-
 
 </script>
 <style lang="scss" scoped>

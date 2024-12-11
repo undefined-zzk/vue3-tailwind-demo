@@ -22,3 +22,8 @@
     width: 400px;
   }
 }
+@layer utilities{
+  .h-2screen{
+    height: 200vh;
+  }
+}
