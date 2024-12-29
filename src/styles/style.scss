@@ -21,9 +21,10 @@
   .w-100 {
     width: 400px;
   }
-}
-@layer utilities{
-  .h-2screen{
+  .h-2screen {
     height: 200vh;
+  }
+  .z-100 {
+    z-index: 100;
   }
 }
