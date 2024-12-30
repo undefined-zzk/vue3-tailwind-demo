@@ -1,5 +1,7 @@
-import { createWebHistory, createRouter } from "vue-router";
-import { useRouteStore } from "@/stores/modules/route";
+import { createWebHistory, createRouter } from "vue-router"
+import { useRouteStore } from "@/stores/modules/route"
+
+
 export const routes = [
   {
     path: "/",
@@ -56,17 +58,28 @@ export const routes = [
       hidden: false,
     },
   },
-];
+  {
+    path: "/iframe",
+    component: () => import("@/views/iframe/index.vue"),
+    meta: {
+      keepAlive: false,
+      title: "iframe",
+      name: "iframe",
+      icon: "iframe",
+      hidden: false,
+    },
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-});
+})
 
 router.beforeEach((to, from) => {
-  const useRoute = useRouteStore();
-  useRoute.setCacheRoute();
-  return true;
-});
+  const useRoute = useRouteStore()
+  useRoute.setCacheRoute()
+  return true
+})
 
-export default router;
+export default router

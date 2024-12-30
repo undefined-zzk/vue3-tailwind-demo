@@ -1,24 +1,24 @@
 html,
 body {
-  height: 100vh;
   width: 100%;
+  overflow-y: auto;
   /* 自定义滚动条样式 */
   ::-webkit-scrollbar {
-    width: 5px; /* 滚动条宽度 */
+    width: 10px; /* 滚动条宽度 */
     height: 5px; /* 滚动条高度 */
   }
 
   ::-webkit-scrollbar-track {
-    background: rgb(255, 230, 255); /* 滚动条轨道背景 */
+    background: rgb(247, 181, 247); /* 滚动条轨道背景 */
     border-radius: 10px; /* 轨道圆角 */
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #ccc; /* 滚动条滑块背景 */
-    border-radius: 50%; /* 滑块圆角 */
+    background: #9c9a9a; /* 滚动条滑块背景 */
+    border-radius: 20%; /* 滑块圆角 */
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(255, 164, 255); /* 滑块悬停时的背景 */
+    background: rgb(250, 147, 250); /* 滑块悬停时的背景 */
   }
 }
